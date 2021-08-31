@@ -11,6 +11,7 @@ from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 
 from tf2_ros import TransformListener, Buffer, LookupException
+import yaml
 
 
 class Listener(Node):
@@ -19,10 +20,12 @@ class Listener(Node):
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
-        self.timer = self.create_timer(1, self.run)
+        self.timer = self.create_timer(4, self.run)
 
     def run(self):
-        self.get_logger().info(self.tf_buffer.all_frames_as_yaml())
+        frames = yaml.load(self.tf_buffer.all_frames_as_yaml(), yaml.FullLoader)
+        for frame in frames:
+            self.get_logger().info("\t\t{}".format(frame))
 
 
 def main(args=None):

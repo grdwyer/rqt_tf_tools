@@ -1,0 +1,17 @@
+<library path="rqt_tf_tools">
+    <class name="RqtTFListener" type="rqt_tf_tools.rqt_tf_listener.RqtTFListener" base_class_type="rqt_gui_py::Plugin">
+        <description>
+            A Python GUI plugin to check transforms in the tf tree
+        </description>
+        <qtgui>
+            <group>
+                <label>TF tools</label>
+                <icon type="theme">folder</icon>
+                <statustip>Plugins related to tf2 library.</statustip>
+            </group>
+            <label>tf Listener</label>
+            <icon type="theme">applications-other</icon>
+            <statustip>Plugins related to tf2 library.</statustip>
+        </qtgui>
+    </class>
+</library>

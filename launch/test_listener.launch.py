@@ -43,6 +43,14 @@ def generate_launch_description():
                             )
     # nodes.append(tf_listener)
 
+    rqt = Node(name='rqt',
+               package='rqt_gui',
+               executable='rqt_gui',
+               output='screen',
+               arguments=['--force-discover']
+               )
+    nodes.append(rqt)
+
     static_tf_1 = Node(package='tf2_ros',
                        executable='static_transform_publisher',
                        name='tf_pub_one',
