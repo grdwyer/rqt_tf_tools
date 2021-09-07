@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>712</width>
-    <height>325</height>
+    <height>277</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>20</y>
-     <width>411</width>
-     <height>291</height>
+     <width>421</width>
+     <height>231</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -34,7 +34,14 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLCDNumber" name="lcd_tx"/>
+     <widget class="QLCDNumber" name="lcd_tx">
+      <property name="smallDecimalPoint">
+       <bool>true</bool>
+      </property>
+      <property name="digitCount">
+       <number>6</number>
+      </property>
+     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="label_3">
@@ -47,7 +54,14 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLCDNumber" name="lcd_ty"/>
+     <widget class="QLCDNumber" name="lcd_ty">
+      <property name="smallDecimalPoint">
+       <bool>true</bool>
+      </property>
+      <property name="digitCount">
+       <number>6</number>
+      </property>
+     </widget>
     </item>
     <item row="0" column="2">
      <widget class="QLabel" name="label_2">
@@ -70,10 +84,18 @@
      </widget>
     </item>
     <item row="0" column="3">
-     <widget class="QLCDNumber" name="lcd_rx"/>
+     <widget class="QLCDNumber" name="lcd_rx">
+      <property name="smallDecimalPoint">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
     <item row="1" column="3">
-     <widget class="QLCDNumber" name="lcd_ry"/>
+     <widget class="QLCDNumber" name="lcd_ry">
+      <property name="smallDecimalPoint">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_5">
@@ -96,10 +118,21 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLCDNumber" name="lcd_tz"/>
+     <widget class="QLCDNumber" name="lcd_tz">
+      <property name="smallDecimalPoint">
+       <bool>true</bool>
+      </property>
+      <property name="digitCount">
+       <number>6</number>
+      </property>
+     </widget>
     </item>
     <item row="2" column="3">
-     <widget class="QLCDNumber" name="lcd_rz"/>
+     <widget class="QLCDNumber" name="lcd_rz">
+      <property name="smallDecimalPoint">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -109,10 +142,17 @@
      <x>440</x>
      <y>20</y>
      <width>241</width>
-     <height>291</height>
+     <height>231</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="button_refresh_tf">
+      <property name="text">
+       <string>Refresh TF frames</string>
+      </property>
+     </widget>
+    </item>
     <item>
      <widget class="QLabel" name="label_7">
       <property name="sizePolicy">

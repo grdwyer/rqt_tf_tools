@@ -10,7 +10,7 @@ from qt_gui.plugin import Plugin
 from python_qt_binding import loadUi
 from python_qt_binding.QtCore import QAbstractListModel, QFile, QIODevice, Qt, Signal
 from python_qt_binding.QtWidgets import QCompleter, QFileDialog, QGraphicsScene, QWidget, QLabel
-from PyQt5.QtWidgets import QComboBox
+from python_qt_binding.QtWidgets import QComboBox
 from tf2_ros import TransformListener, Buffer, LookupException
 import yaml
 from PyKDL import Rotation
@@ -38,8 +38,8 @@ class RqtTFListener(Plugin):
 
         self.frames = []
         # TODO: param refresh rates
-        self.time_tf_frame = self._node.create_timer(5, self.cb_refresh_list)
-        self.time_tf_lookup = self._node.create_timer(1, self.cb_tf_lookup)
+        self._widget.button_refresh_tf.clicked.connect(self.cb_refresh_list)
+        self.time_tf_lookup = self._node.create_timer(0.1, self.cb_tf_lookup)
 
         self.cb_refresh_list()
 
