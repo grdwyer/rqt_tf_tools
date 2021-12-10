@@ -4,6 +4,7 @@ from ament_index_python.packages import get_package_share_directory
 import rclpy
 from rclpy.node import Node
 import rclpy.time
+import rclpy.timer
 from time import sleep
 
 from qt_gui.plugin import Plugin
@@ -39,9 +40,15 @@ class RqtTFListener(Plugin):
         self.frames = []
         # TODO: param refresh rates
         self._widget.button_refresh_tf.clicked.connect(self.cb_refresh_list)
-        self.time_tf_lookup = self._node.create_timer(0.1, self.cb_tf_lookup)
+        self.time_tf_lookup = None
+        self.time_get_tf = self._node.create_timer(0.5, self.cb_time_get_tf)
 
+    def cb_time_get_tf(self):
         self.cb_refresh_list()
+        if len(self.frames) > 0:
+            self._node.get_logger().info("Frames have been found, cancelling callback")
+            self.time_get_tf.cancel()
+            self.time_tf_lookup = self._node.create_timer(0.1, self.cb_tf_lookup)
 
     def cb_refresh_list(self):
         # This feels messy fully reloading each each update
