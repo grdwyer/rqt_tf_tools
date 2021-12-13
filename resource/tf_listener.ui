@@ -24,7 +24,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="label_tx">
       <property name="text">
        <string>X (m)</string>
       </property>
@@ -44,7 +44,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="label_ty">
       <property name="text">
        <string>Y (m)</string>
       </property>
@@ -64,7 +64,7 @@
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="label_rx">
       <property name="text">
        <string>x rotation (deg)</string>
       </property>
@@ -74,7 +74,7 @@
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="label_ry">
       <property name="text">
        <string>y rotation (deg)</string>
       </property>
@@ -98,7 +98,7 @@
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="label_tz">
       <property name="text">
        <string>Z (m)</string>
       </property>
@@ -108,7 +108,7 @@
      </widget>
     </item>
     <item row="2" column="2">
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="label_rz">
       <property name="text">
        <string>z rotation (deg)</string>
       </property>
@@ -150,6 +150,13 @@
      <widget class="QPushButton" name="button_refresh_tf">
       <property name="text">
        <string>Refresh TF frames</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="button_switch_units">
+      <property name="text">
+       <string>Change units to mm</string>
       </property>
      </widget>
     </item>

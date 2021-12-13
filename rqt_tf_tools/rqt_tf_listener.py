@@ -40,8 +40,24 @@ class RqtTFListener(Plugin):
         self.frames = []
         # TODO: param refresh rates
         self._widget.button_refresh_tf.clicked.connect(self.cb_refresh_list)
+        self._widget.button_switch_units.clicked.connect(self.cb_switch_units)
         self.time_tf_lookup = None
         self.time_get_tf = self._node.create_timer(0.5, self.cb_time_get_tf)
+        self.units_mm = False
+
+    def cb_switch_units(self):
+        self.units_mm = not self.units_mm
+
+        if self.units_mm:
+            self._widget.label_tx.setText('X(mm)')
+            self._widget.label_ty.setText('Y(mm)')
+            self._widget.label_tz.setText('Z(mm)')
+            self._widget.button_switch_units.setText('Change units to m')
+        elif not self.units_mm:
+            self._widget.label_tx.setText('X(m)')
+            self._widget.label_ty.setText('Y(m)')
+            self._widget.label_tz.setText('Z(m)')
+            self._widget.button_switch_units.setText('Change units to mm')
 
     def cb_time_get_tf(self):
         self.cb_refresh_list()
@@ -81,17 +97,24 @@ class RqtTFListener(Plugin):
         try:
             now = rclpy.time.Time()
             trans = self.tf_buffer.lookup_transform(
-                child,
                 parent,
+                child,
                 now)
         except LookupException as ex:
             self._node.get_logger().error(
                 f'Could not transform {child} to {parent}: {ex}')
             return
 
-        self._widget.lcd_tx.display(trans.transform.translation.x)
-        self._widget.lcd_ty.display(trans.transform.translation.y)
-        self._widget.lcd_tz.display(trans.transform.translation.z)
+        if self.units_mm:
+            self._widget.lcd_tx.display(trans.transform.translation.x*1000.0)
+            self._widget.lcd_ty.display(trans.transform.translation.y*1000.0)
+            self._widget.lcd_tz.display(trans.transform.translation.z*1000.0)
+
+        else:
+            self._widget.lcd_tx.display(trans.transform.translation.x)
+            self._widget.lcd_ty.display(trans.transform.translation.y)
+            self._widget.lcd_tz.display(trans.transform.translation.z)
+
         rotation = Rotation.Quaternion(trans.transform.rotation.x,
                                        trans.transform.rotation.y,
                                        trans.transform.rotation.z,
