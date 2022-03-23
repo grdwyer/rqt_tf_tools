@@ -6,7 +6,7 @@ package_name = 'rqt_tf_tools'
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='0.0.1',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -19,14 +19,13 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='george',
-    maintainer_email='george@todo.todo',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    maintainer='George Dwyer',
+    maintainer_email='george.dwyer@ucl.ac.uk',
+    description='RQT components for TF',
+    license='BSD 3-Clause License',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'tf_listener = rqt_tf_tools.tf_listener:main'
         ],
     },
 )
